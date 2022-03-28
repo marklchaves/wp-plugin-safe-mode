@@ -32,6 +32,16 @@ if ( defined( 'WP_DISABLE_PLUGINS' ) && WP_DISABLE_PLUGINS && isset( $_GET['safe
 		$plugin_list['query-monitor'] = 'query-monitor/query-monitor.php';
 		$plugin_list['user-menus'] = 'user-menus/user-menus.php';
 
+		// Option to deactivate this 1 plugin.
+		$np = '';
+		$z ='';
+		if ( isset( $_GET['np'] ) ) {
+			$np = $plugin_list[$_GET['np']];
+			$z = array_search( $np, $plugins );
+			unset( $plugins[$z] );
+			return $plugins;
+		}
+		
 		// The first optional plugin to keep.
 		$p1 = '';
 		$j = '';
