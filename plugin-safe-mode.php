@@ -36,17 +36,17 @@ if ( defined( 'WP_DISABLE_PLUGINS' ) && WP_DISABLE_PLUGINS && isset( $_GET['safe
 		$np = '';
 		$z ='';
 		if ( isset( $_GET['np'] ) ) {
-			$np = $plugin_list[$_GET['np']];
+			$np = $plugin_list[sanitize_text_field( $_GET['np'] )];
 			$z = array_search( $np, $plugins );
 			unset( $plugins[$z] );
 			return $plugins;
 		}
-		
+
 		// The first optional plugin to keep.
 		$p1 = '';
 		$j = '';
 		if ( isset( $_GET['p1'] ) ) {
-			$p1 = $plugin_list[$_GET['p1']];
+			$p1 = $plugin_list[sanitize_text_field( $_GET['p1'] )];
 			$j = array_search( $p1, $plugins );
 		}
 
@@ -54,7 +54,7 @@ if ( defined( 'WP_DISABLE_PLUGINS' ) && WP_DISABLE_PLUGINS && isset( $_GET['safe
 		$p2 = '';
 		$k ='';
 		if ( isset( $_GET['p2'] ) ) {
-			$p2 = $plugin_list[$_GET['p2']];
+			$p2 = $plugin_list[sanitize_text_field( $_GET['p2'] ) ];
 			$k = array_search( $p2, $plugins );
 		}
 
